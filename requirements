@@ -1,0 +1,22 @@
+# php settings 
+short-open-tags = on
+upload-max-filesize = 110M
+post-max-size = 110M
+max-execution-time = 1500
+safe-mode = off
+register-globals = off
+
+#php modules
+posix
+gd
+curl
+simple-xml
+zip 
+phpmysql,PDO
+
+#apache
+allow override all in apaceh.conf
+
+
+# apache module 
+a2enmod rewrite

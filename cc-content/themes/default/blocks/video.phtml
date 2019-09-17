@@ -1,0 +1,43 @@
+<?php
+
+$video = $model;
+$videoService = $this->getService('Video');
+
+?>
+
+<div class="video">
+    <div class="thumbnail">
+        <a href="<?=$videoService->getUrl($video)?>/" title="<?php echo htmlspecialchars($video->title); ?>">
+            <img width="220" height="130" src="<?=$config->thumbUrl?>/<?=$video->filename?>.jpg" />
+        </a>
+        <?php $playlistId = ($loggedInUser) ? $this->getService('Playlist')->getUserSpecialPlaylist($loggedInUser, 'watch_later')->playlistId : ''; ?>
+        <span class="watchLater">
+            <a data-video="<?=$video->videoId?>" data-playlist="<?=$playlistId?>" href="" title="<?=Language::GetText('watch_later')?>"><?=Language::GetText('watch_later')?></a>
+        </span>
+        <span class="duration"><?=$video->duration?></span>
+    </div>
+   <a href="<?=$videoService->getUrl($video)?>/" title="<?php echo htmlspecialchars($video->title); ?>">
+
+<!--    <div class="vtitle">
+                 <?php // echo htmlspecialchars($video->title); ?>
+    </div>-->
+
+    <div class="v-heading-one">
+            
+            <?php  foreach ($video->tags as $value): ?>
+                    <?php   echo htmlspecialchars($value); ?>
+            <?php  endforeach; ?>
+            
+    </div>
+           
+
+         <div class="v-heading-two">
+            <?php echo htmlspecialchars($video->description); ?>
+        </div>
+  
+  <div class="v-views"><?=$video->views?> views</div>
+
+</a>
+
+
+</div>

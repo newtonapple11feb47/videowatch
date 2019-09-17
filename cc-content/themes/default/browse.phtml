@@ -1,0 +1,10 @@
+
+
+<?php if (!empty ($browse_videos)): ?>
+    <div class="videos_list">
+        <?php $this->RepeatingBlock('video.phtml', $browse_videos); ?>
+    </div>
+    <?=$pagination->Paginate()?>
+<?php else: ?>
+    <p><strong><?=Language::GetText('no_videos')?></strong></p>
+<?php endif; ?>

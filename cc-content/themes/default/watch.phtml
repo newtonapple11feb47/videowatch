@@ -1,0 +1,132 @@
+<?php
+$this->addMeta('videoId', $video->videoId);
+$this->addMeta('theme', $this->options->themeUrl);
+$this->addMeta('loggedIn', (boolean) $loggedInUser);
+$this->addCss('video-js.css');
+$this->addCss('jscrollpane.css');
+$this->addJs('video.plugin.js');
+$this->addJs('jscrollpane.plugin.js');
+$this->addJs('mousewheel.plugin.js');
+$this->setLayout('full');
+?>
+
+
+<div class="video-main">
+        <!-- BEGIN VIDEO -->
+        <div role="main" id="player main" >
+
+
+            <section class="video-section">
+                <video class="video-js vjs-default-skin" data-setup='{ "controls": true, "autoplay": true, "preload": "auto" }' poster="<?=$config->thumbUrl?>/<?=$video->filename?>.jpg">
+                    <source src="<?=$config->h264Url?>/<?=$video->filename?>.mp4" type="video/mp4" />
+                    <?php if ($webmEncodingEnabled): ?>
+                        <source src="<?=$config->webmUrl?>/<?=$video->filename?>.webm" type="video/webm" />
+                    <?php endif; ?>
+                    <?php if ($theoraEncodingEnabled): ?>
+                        <source src="<?=$config->theoraUrl?>/<?=$video->filename?>.ogg" type="video/ogg" />
+                    <?php endif; ?>
+                </video>
+
+            <section>
+
+</div>
+
+
+
+                <div class="d13">
+                    <div class="d13a">
+                        <div class="d13a1"></div>
+                        <div class="d13a2"></div>
+                    </div>
+
+                                        <div class="d13a">
+                        <div class="d13a1"></div>
+                        <div class="d13a2"></div>
+                    </div>
+
+                                        <div class="d13a">
+                        <div class="d13a1"></div>
+                        <div class="d13a2"></div>
+                    </div>
+
+                                        <div class="d13a">
+                        <div class="d13a1"></div>
+                        <div class="d13a2"></div>
+                    </div>
+
+                                        <div class="d13a">
+                        <div class="d13a1"></div>
+                        <div class="d13a2"></div>
+                    </div>
+
+                                        <div class="d13a">
+                        <div class="d13a1"></div>
+                        <div class="d13a2"></div>
+                    </div>
+
+                                        <div class="d13a">
+                        <div class="d13a1"></div>
+                        <div class="d13a2"></div>
+                    </div>
+
+
+                                        <div class="d13a">
+                        <div class="d13a1"></div>
+                        <div class="d13a2"></div>
+                    </div>
+
+                                        <div class="d13a">
+                        <div class="d13a1"></div>
+                        <div class="d13a2"></div>
+                    </div>
+
+                                        <div class="d13a">
+                        <div class="d13a1"></div>
+                        <div class="d13a2"></div>
+                    </div>
+
+
+                                        <div class="d13a">
+                        <div class="d13a1"></div>
+                        <div class="d13a2"></div>
+                    </div>
+                    
+                </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="desp">
+    <img class="desp1" src="<?php echo $hostname;?>/in/apps/video/poster2/pic.png">
+
+    </img>
+    <div class="desp2">
+            
+            <?php  foreach ($video->tags as $value): ?>
+                    <?php  echo htmlspecialchars($value); ?>
+            <?php  endforeach; ?>
+            
+    </div>
+    <div class="desp3"><?php echo htmlspecialchars($video->description); ?></div>
+   <!-- INSTRUCTOR WHO MADE THIS COURSE -->
+    <div class="desp4"><span class="blue-ex">Instructor</span><a href="<?=HOST?>/members/<?=$member->username?>/" title="<?=$member->username?>"><?=$member->username?></a></div>
+
+    <div class="desp6"><span class="blue-ex">Last Updated</span> <?=date('m-d-Y', strtotime($video->dateCreated))?></div>
+
+</div> 
+
+
+
+
+
+

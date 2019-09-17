@@ -1,0 +1,21 @@
+<?php
+$this->addJs('jquery.min.js');
+$this->addJs('jcycle.plugin.js');
+$this->addJs('jcycle.js');
+
+
+
+?>
+
+    <div class="videos_list">
+        <?php if (!empty ($recent_videos)): ?>
+            <?php $this->repeatingBlock('video.phtml', $recent_videos); ?>
+        <?php else: ?>
+            <div class="block"><strong><?=Language::getText('no_videos')?></strong></div>
+        <?php endif; ?>
+    </div>
+
+
+
+
+

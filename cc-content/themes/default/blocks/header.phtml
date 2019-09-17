@@ -1,0 +1,202 @@
+<!-- BEGIN HEADER -->
+<div id="header">
+    <div id="sub_header">
+        <a id="logo" href="<?=HOST?>/" title=""></a>
+            
+
+            <form action="<?=HOST?>/search/" method="post">
+                <input class="defaultText" title="<?=Language::GetText('search_text')?>" type="text" name="keyword" value="<?=Language::GetText('search_text')?>" />
+                <input type="hidden" name="submitted_search" value="TRUE" />
+                <button type="submit" value="" class="ob3b"></button>
+            </form>
+
+    <div class="right-header-ak">
+       <div class="header-ul-2"></div>
+
+    </div>
+
+        </div>
+</div>
+<!-- END HEADER -->
+
+
+<!-- BEGIN NAV -->
+<div id="nav">
+    <div id="sub_nav">
+        <nav>
+            <a href="<?=HOST?>/browse/"><?=Language::GetText('videos')?></a>
+
+            <?php if ($config->enableUserUploads): ?>
+                <a href="<?=HOST?>/account/upload/video/"><?=Language::GetText('upload')?></a>
+            <?php endif; ?>
+
+                                
+
+
+
+            <?php if ($loggedInUser): ?>
+
+                <a href="<?=HOST?>/logout/" title="<?=Language::GetText('logout')?>"><?=Language::GetText('logout')?></a>
+
+                <a href="<?=HOST?>/account/" title="<?=Language::GetText('account')?>"><?=Language::GetText('account')?></a>
+             
+                <a title="<?=Language::GetText('view_my_profile')?>" href="<?=HOST?>/members/<?=$loggedInUser->username?>/"><?=Language::GetText('view_my_profile')?></a>
+
+                <?php if ($this->getService('User')->checkPermissions('admin_panel', $loggedInUser)): ?>
+                <a href="<?=HOST?>/cc-admin/" title="<?=Language::GetText('admin_panel')?>"><?=Language::GetText('admin_panel')?></a>
+                        
+
+            <?php endif ?>
+
+            <?php else: ?>
+                <a href="<?=HOST?>/login/" title="<?=Language::GetText('login')?>"><?=Language::GetText('login')?></a>
+
+
+                        <?php if ($config->enableRegistrations): ?>
+                            <a href="<?=HOST?>/register/" title="<?=Language::GetText('register')?>"><?=Language::GetText('register')?></a>
+                        <?php endif; ?>
+                    <?php endif; ?>
+
+
+
+        </nav>
+
+
+
+
+
+
+
+        <?php $activeLanguages = Language::getActiveLanguages(); ?>
+        <?php if (count($activeLanguages) > 1): ?>
+
+            <div id="languages">
+                <a class="active-language" href=""><?=Language::getLanguage(true)?></a>
+                <ul>
+                    <?php foreach ($activeLanguages as $systemName => $language): ?>
+                        <li><a href="<?=HOST?>/language/set/<?=$systemName?>/"><?=$language->native_name?></a></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+
+        <?php endif; ?>
+
+    </div>
+
+</div>
+<!-- END NAV -->
+
+
+
+
+
+
+
+
+<?php
+
+$asv1 = '<a href="'.HOST.'/browse/">
+
+                        <div class="menu-sub">
+					            <div class="specific-numb">1</div>
+					            <div class="menu-text">Browse Videos</div>
+				        </div> 
+
+        </a>';
+
+
+
+         if ($config->enableUserUploads):
+               
+            $asv2 = '<a href="'.HOST.'/account/upload/video/">
+
+                    <div class="menu-sub">
+					            <div class="specific-numb">2</div>
+					            <div class="menu-text">Upload</div>
+				    </div>
+
+            </a> ';
+
+          endif;
+
+
+         if ($loggedInUser):
+
+            $asv3  = '<a href="'.HOST.'/logout/">
+
+                    <div class="menu-sub">
+					            <div class="specific-numb">3</div>
+					            <div class="menu-text">Logout</div>
+				    </div>
+
+
+                </a>';
+
+          $asv4  =  '<a href="'.HOST.'/account/">
+                
+                    <div class="menu-sub">
+					            <div class="specific-numb">4</div>
+					            <div class="menu-text">Account</div>
+				    </div>
+
+
+            </a>';
+             
+           $asv5  =    '<a href="'.HOST.'/members/'.$loggedInUser->username.'/">
+
+                    <div class="menu-sub">
+					            <div class="specific-numb">5</div>
+					            <div class="menu-text">Video Profile</div>
+				    </div>
+
+                    </a>';
+
+
+	           if ($this->getService('User')->checkPermissions('admin_panel', $loggedInUser)):
+
+	            $asv6  =  '<a href="'.HOST.'/cc-admin/">
+
+	                    <div class="menu-sub">
+						            <div class="specific-numb">6</div>
+						            <div class="menu-text">Admin Panel</div>
+					    </div>
+
+	               </a>';
+	                        
+
+	            endif ;
+
+        else:
+            $asv7 = '<a href="'.HOST.'/login/">
+
+                        <div class="menu-sub">
+						            <div class="specific-numb">7</div>
+						            <div class="menu-text">Login</div>
+					    </div>
+
+                    </a>';
+
+
+            if ($config->enableRegistrations):
+                            
+
+            $asv8 =  '<a href="'.HOST.'/register/">
+
+                        <div class="menu-sub">
+						            <div class="specific-numb">8</div>
+						            <div class="menu-text">Register</div>
+					    </div>
+
+                      </a>';
+
+            endif;
+                  
+endif; 
+
+
+
+include_once '/var/www/main/global/app-nav.php';
+
+
+?>
+
